@@ -36,6 +36,23 @@ const DestinationPage: React.FC<DestinationPageProps> = ({ destination, onPackag
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
+        {/* Destination Hero Image */}
+        <div className="relative h-48 md:h-64 overflow-hidden">
+          <img 
+            src={getDestinationHeroImage(destination)}
+            alt={`${destination} trekking`}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center text-white">
+            <h1 className="text-3xl md:text-4xl font-bold mb-2 flex items-center justify-center space-x-2">
+              <MapPin className="h-8 w-8" />
+              <span>{destination} Treks</span>
+            </h1>
+            <p className="text-lg opacity-90">{destinationAgents.length} verified travel agents available</p>
+          </div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -46,13 +63,6 @@ const DestinationPage: React.FC<DestinationPageProps> = ({ destination, onPackag
                 <ArrowLeft className="h-5 w-5" />
                 <span>Back</span>
               </button>
-              <div>
-                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 flex items-center space-x-2">
-                  <MapPin className="h-6 w-6 text-green-600" />
-                  <span>{destination} Treks</span>
-                </h1>
-                <p className="text-gray-600">{destinationAgents.length} verified travel agents available</p>
-              </div>
             </div>
             
             <button
@@ -255,6 +265,24 @@ const DestinationPage: React.FC<DestinationPageProps> = ({ destination, onPackag
       </div>
     </div>
   );
+};
+
+// Helper function to get destination hero images
+const getDestinationHeroImage = (destination: string) => {
+  const heroImageMap: { [key: string]: string } = {
+    'Coorg': 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    'Chikmagalur': 'https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    'Sakleshpur': 'https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    'Kodachadri': 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    'Kudremukh': 'https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    'Agumbe': 'https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    'Mullayanagiri': 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    'Nandi Hills': 'https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    'Skandagiri': 'https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    'Anthargange': 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+  };
+  
+  return heroImageMap[destination] || 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop';
 };
 
 export default DestinationPage;

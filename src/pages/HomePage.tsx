@@ -19,8 +19,14 @@ const HomePage: React.FC<HomePageProps> = ({ onDestinationSelect }) => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-green-600 via-green-500 to-blue-500 text-white py-20">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+      <section className="relative text-white py-20 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop)'
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-green-900/80 via-green-800/70 to-blue-900/80"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -77,8 +83,13 @@ const HomePage: React.FC<HomePageProps> = ({ onDestinationSelect }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {sunriseTrips.map((trek) => (
               <div key={trek.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group">
-                <div className="relative h-48 bg-gradient-to-br from-orange-400 to-pink-500">
-                  <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-10 transition-opacity"></div>
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    alt={trek.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
                     <h3 className="font-bold text-lg">{trek.name}</h3>
                     <div className="flex items-center space-x-1 text-sm">
@@ -124,8 +135,13 @@ const HomePage: React.FC<HomePageProps> = ({ onDestinationSelect }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {twoDayTrips.map((trek) => (
               <div key={trek.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group">
-                <div className="relative h-48 bg-gradient-to-br from-blue-400 to-green-500">
-                  <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-10 transition-opacity"></div>
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    alt={trek.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
                     <h3 className="font-bold text-lg">{trek.name}</h3>
                     <div className="flex items-center space-x-1 text-sm">
@@ -169,8 +185,13 @@ const HomePage: React.FC<HomePageProps> = ({ onDestinationSelect }) => {
             {destinations.map((destination) => (
               <div key={destination.id} className="group cursor-pointer" onClick={() => onDestinationSelect(destination.name)}>
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2">
-                  <div className={`h-40 bg-gradient-to-br ${destination.gradient} relative`}>
-                    <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-10 transition-opacity"></div>
+                  <div className="h-40 relative overflow-hidden">
+                    <img 
+                      src={getDestinationImage(destination.name)}
+                      alt={destination.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                     <div className="absolute bottom-3 left-3 text-white">
                       <MapPin className="h-5 w-5 mb-1" />
                     </div>
@@ -193,8 +214,15 @@ const HomePage: React.FC<HomePageProps> = ({ onDestinationSelect }) => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-green-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-16 text-white overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=1920&h=600&fit=crop)'
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-green-900/80"></div>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready for Your Next Adventure?</h2>
           <p className="text-xl mb-8 opacity-90">Join thousands of travelers who trust TripConnect for their perfect trek</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -214,6 +242,24 @@ const HomePage: React.FC<HomePageProps> = ({ onDestinationSelect }) => {
       </section>
     </div>
   );
+};
+
+// Helper function to get destination-specific images
+const getDestinationImage = (destination: string) => {
+  const imageMap: { [key: string]: string } = {
+    'Coorg': 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Chikmagalur': 'https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Sakleshpur': 'https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Kodachadri': 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Kudremukh': 'https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Agumbe': 'https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Mullayanagiri': 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Nandi Hills': 'https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Skandagiri': 'https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Anthargange': 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+  };
+  
+  return imageMap[destination] || 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop';
 };
 
 export default HomePage;

@@ -74,6 +74,22 @@ const PackageDetailsPage: React.FC<PackageDetailsPageProps> = ({ packageId, onBa
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
+            {/* Package Hero Image */}
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="relative h-64 md:h-80">
+                <img 
+                  src="https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop"
+                  alt={selectedPackage.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 text-white">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-2">{selectedPackage.destination}</h2>
+                  <p className="text-lg opacity-90">{selectedPackage.name}</p>
+                </div>
+              </div>
+            </div>
+
             {/* Package Overview */}
             <div className="bg-white rounded-lg shadow-lg p-6">
               <h2 className="text-xl font-bold text-gray-900 mb-4">Package Overview</h2>
