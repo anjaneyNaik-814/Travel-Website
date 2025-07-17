@@ -78,7 +78,7 @@ const PackageDetailsPage: React.FC<PackageDetailsPageProps> = ({ packageId, onBa
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="relative h-64 md:h-80">
                 <img 
-                  src="https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop"
+                  src={getPackageHeroImage(selectedPackage.destination)}
                   alt={selectedPackage.name}
                   className="w-full h-full object-cover"
                 />
@@ -287,6 +287,23 @@ const PackageDetailsPage: React.FC<PackageDetailsPageProps> = ({ packageId, onBa
       </div>
     </div>
   );
+};
+
+// Helper function to get package hero images
+const getPackageHeroImage = (destination: string) => {
+  const heroImageMap: { [key: string]: string } = {
+    'Coorg': 'https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+    'Chikmagalur': 'https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+    'Sakleshpur': 'https://images.pexels.com/photos/1591447/pexels-photo-1591447.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+    'Kodachadri': 'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+    'Kudremukh': 'https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+    'Agumbe': 'https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+    'Nandi Hills': 'https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+    'Skandagiri': 'https://images.pexels.com/photos/1624438/pexels-photo-1624438.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+    'Anthargange': 'https://images.pexels.com/photos/1591056/pexels-photo-1591056.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+  };
+  
+  return heroImageMap[destination] || 'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop';
 };
 
 export default PackageDetailsPage;

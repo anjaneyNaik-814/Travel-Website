@@ -23,7 +23,7 @@ const HomePage: React.FC<HomePageProps> = ({ onDestinationSelect }) => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop)'
+            backgroundImage: 'url(https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop)'
           }}
         ></div>
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/80 via-green-800/70 to-blue-900/80"></div>
@@ -85,7 +85,7 @@ const HomePage: React.FC<HomePageProps> = ({ onDestinationSelect }) => {
               <div key={trek.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group">
                 <div className="relative h-48 overflow-hidden">
                   <img 
-                    src="https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    src={getSunriseTrekImage(trek.id)}
                     alt={trek.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -137,7 +137,7 @@ const HomePage: React.FC<HomePageProps> = ({ onDestinationSelect }) => {
               <div key={trek.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group">
                 <div className="relative h-48 overflow-hidden">
                   <img 
-                    src="https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    src={getTwoDayTrekImage(trek.id)}
                     alt={trek.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -218,7 +218,7 @@ const HomePage: React.FC<HomePageProps> = ({ onDestinationSelect }) => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=1920&h=600&fit=crop)'
+            backgroundImage: 'url(https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=1920&h=600&fit=crop)'
           }}
         ></div>
         <div className="absolute inset-0 bg-green-900/80"></div>
@@ -247,19 +247,43 @@ const HomePage: React.FC<HomePageProps> = ({ onDestinationSelect }) => {
 // Helper function to get destination-specific images
 const getDestinationImage = (destination: string) => {
   const imageMap: { [key: string]: string } = {
-    'Coorg': 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-    'Chikmagalur': 'https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-    'Sakleshpur': 'https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-    'Kodachadri': 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-    'Kudremukh': 'https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-    'Agumbe': 'https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-    'Mullayanagiri': 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-    'Nandi Hills': 'https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-    'Skandagiri': 'https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-    'Anthargange': 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Coorg': 'https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Chikmagalur': 'https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Sakleshpur': 'https://images.pexels.com/photos/1591447/pexels-photo-1591447.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Kodachadri': 'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Kudremukh': 'https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Agumbe': 'https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Mullayanagiri': 'https://images.pexels.com/photos/1624438/pexels-photo-1624438.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Nandi Hills': 'https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Skandagiri': 'https://images.pexels.com/photos/1624438/pexels-photo-1624438.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'Anthargange': 'https://images.pexels.com/photos/1591056/pexels-photo-1591056.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
   };
   
-  return imageMap[destination] || 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop';
+  return imageMap[destination] || 'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop';
+};
+
+// Helper function to get sunrise trek images
+const getSunriseTrekImage = (trekId: string) => {
+  const imageMap: { [key: string]: string } = {
+    'nandi-sunrise': 'https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'skandagiri-sunrise': 'https://images.pexels.com/photos/1624438/pexels-photo-1624438.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'chikmagalur-sunrise': 'https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'kodachadri-sunrise': 'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+  };
+  
+  return imageMap[trekId] || 'https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop';
+};
+
+// Helper function to get 2-day trek images
+const getTwoDayTrekImage = (trekId: string) => {
+  const imageMap: { [key: string]: string } = {
+    'coorg-2day': 'https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'sakleshpur-2day': 'https://images.pexels.com/photos/1591447/pexels-photo-1591447.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'kudremukh-2day': 'https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    'agumbe-2day': 'https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+  };
+  
+  return imageMap[trekId] || 'https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop';
 };
 
 export default HomePage;

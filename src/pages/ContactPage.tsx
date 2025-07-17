@@ -35,7 +35,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ onBack }) => {
         {/* Contact Hero Image */}
         <div className="relative h-48 md:h-64 overflow-hidden">
           <img 
-            src="https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop"
+            src="https://images.pexels.com/photos/1591056/pexels-photo-1591056.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop"
             alt="Contact us for your next adventure"
             className="w-full h-full object-cover"
           />
