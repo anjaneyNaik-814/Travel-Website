@@ -8,7 +8,7 @@ interface DestinationPageProps {
   onBack: () => void;
 }
 
-const DestinationPage: React.FC<DestinationPageProps> = ({ destination, onPackageSelect, onBack }) => {
+export default function DestinationPage({ destination, onPackageSelect, onBack }: DestinationPageProps) {
   const [filters, setFilters] = useState({
     minBudget: 0,
     maxBudget: 10000,
@@ -265,7 +265,7 @@ const DestinationPage: React.FC<DestinationPageProps> = ({ destination, onPackag
       </div>
     </div>
   );
-};
+}
 
 // Helper function to get destination hero images
 const getDestinationHeroImage = (destination: string) => {
@@ -284,5 +284,3 @@ const getDestinationHeroImage = (destination: string) => {
   
   return heroImageMap[destination] || 'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop';
 };
-
-export default DestinationPage;
